@@ -10,7 +10,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import Login from "./page/Login.vue";
-import Index from "./components/Index.vue"
+import Admin from "./page/Admin.vue"
 
 // 全局注册组件
 Vue.use(ElementUI);
@@ -20,7 +20,7 @@ Vue.use(VueRouter)
 var routes=[
   {
     path:"/",
-    component:Index
+    component:Admin
   },
   {
     path:"/login",
