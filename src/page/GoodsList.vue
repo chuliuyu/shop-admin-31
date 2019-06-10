@@ -2,7 +2,7 @@
   <div>
     <el-row type="flex" justify="space-between">
       <div>
-        <el-button type="primary">新增</el-button>
+        <el-button type="primary" @click="handelAdd">新增</el-button>
         <el-button type="danger" @click="handleDels">删除</el-button>
       </div>
       <div>
@@ -136,7 +136,7 @@ export default {
           this.selectGoods=val;
       },
       handleEdit(index, row) {
-        console.log(index, row);
+        this.$router.push("/admin/goods-edit/"+row.id)
       },
     //   删除单个商品
       handleDelete(index, row) {
@@ -145,7 +145,11 @@ export default {
       },
     // 搜索商品
       handleSearch(){
-          this.getData();
+        this.getData();
+      },
+    // 添加商品
+      handelAdd(){
+        this.$router.push("/admin/goods-add")
       },
 
       handleSizeChange(val) {

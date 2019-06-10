@@ -14,6 +14,8 @@ import Admin from "./page/Admin.vue";
 import GoodsList from "./page/GoodsList.vue";
 import CategoryList from "./page/CategoryList.vue";
 import Order from "./page/Order.vue";
+import GoodsAdd from "./page/GoodsAdd.vue";
+import GoodsEdit from "./page/GoodsEdit.vue";
 
 // 全局注册组件
 Vue.use(ElementUI);
@@ -40,6 +42,16 @@ var routes=[
         path:"goods-list",
         component:GoodsList,
         meta:"商品列表"
+      },
+      {
+        path:"goods-add",
+        component:GoodsAdd,
+        meta:"添加商品"
+      },
+      {
+        path:"goods-edit/:id",
+        component:GoodsEdit,
+        meta:"编辑商品"
       },
       {
         path:"category-list",
