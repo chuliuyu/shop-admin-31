@@ -41,7 +41,8 @@ export default {
             this.$axios({
               url:"http://localhost:8899/admin/account/login",
               method:"POST",
-              data
+              data,
+              withCredentials: true
             }).then(res=>{
               // console.log(res);
               const {message,status}=res.data;

@@ -10,7 +10,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import Login from "./page/Login.vue";
-import Admin from "./page/Admin.vue"
+import Admin from "./page/Admin.vue";
+import GoodsList from "./page/GoodsList.vue";
+import CategoryList from "./page/CategoryList.vue";
+import Order from "./page/Order.vue";
 
 // 全局注册组件
 Vue.use(ElementUI);
@@ -20,11 +23,35 @@ Vue.use(VueRouter)
 var routes=[
   {
     path:"/",
-    component:Admin
+    redirect:"/admin/goods-list",
+    meta:"首页"
   },
   {
     path:"/login",
-    component:Login
+    component:Login,
+    meta:"登录"
+  },
+  {
+    path:"/admin",
+    component:Admin,
+    meta:"后台管理",
+    children:[
+      {
+        path:"goods-list",
+        component:GoodsList,
+        meta:"商品列表"
+      },
+      {
+        path:"category-list",
+        component:CategoryList,
+        meta:"栏目列表"
+      },
+      {
+        path:"order-list",
+        component:Order,
+        meta:"订单管理"
+      }
+    ]
   }
 ]
  var router=new VueRouter({

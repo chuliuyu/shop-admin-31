@@ -1,9 +1,16 @@
 <template>
     <el-container>
-  <el-aside width="auto"><Menu :isShow="isShow"></Menu></el-aside>
+  <el-aside width="auto">
+    <Menu :isShow="isShow"></Menu>
+  </el-aside>
   <el-container>
-    <el-header><Header @click="handlechangeshow"></Header></el-header>
-    <el-main><Breadcrumb></Breadcrumb></el-main>
+    <el-header>
+      <Header @click="handlechangeshow"></Header>
+    </el-header>
+    <el-main>
+      <Breadcrumb></Breadcrumb>
+      <router-view></router-view>
+    </el-main>
   </el-container>
 </el-container>
 </template>
@@ -47,10 +54,10 @@ export default {
   }
   
   .el-main {
-    background-color: #E9EEF3;
+    background-color: #fff;
     color: #333;
     text-align: center;
-    line-height: 160px;
+    line-height: 60px;
   }
   
   body >div> .el-container {
