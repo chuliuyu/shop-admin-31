@@ -8,6 +8,8 @@ import axios from 'axios';
 import ElementUI from 'element-ui';
 // 引入element-ui样式
 import 'element-ui/lib/theme-chalk/index.css';
+// 引入仓库插件
+import store from "./store"
 
 import Login from "./page/Login.vue";
 import Admin from "./page/Admin.vue";
@@ -69,10 +71,34 @@ var routes=[
  var router=new VueRouter({
    routes
  })
+
+ router.beforeEach((to,from,next)=>{
+   axios({
+     url:"http://localhost:8899/admin/account/islogin",
+     method:"GET",
+     withCredentials: true
+   }).then(res=>{
+     const {code}=res.data;
+     if(to.path=="/login"){
+       if(code==="logined"){
+         next("/admin/goods-list");
+       }else{
+         next();
+       }
+     }else{
+       if(code==="logined"){
+         next();
+       }else{
+         next("/login")
+       }
+     }
+   })
+ })
 // 把axios绑定到vue实例的属性$axios
 Vue.prototype.$axios = axios;
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

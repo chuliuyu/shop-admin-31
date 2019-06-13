@@ -62,9 +62,11 @@
                     list-type="picture-card"
                     :on-success="handleCartSuccess"
                     :on-preview="handlePictureCardPreview"
-                    :on-remove="handleRemove">
+                    :on-remove="handleRemove"
+                    :file-list="form.fileList">
                     <i class="el-icon-plus"></i>
                     </el-upload>
+
                     <el-dialog :visible.sync="dialogVisible">
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
@@ -139,7 +141,13 @@ export default {
             console.log(message);
             this.form={
                 ...message,
-                category_id:+message.category_id
+                category_id:+message.category_id,
+                fileList:message.fileList.map(v=>{
+                    return {
+                        ...v,
+                        url: `http://localhost:8899${v.shorturl}`
+                    }
+                })
             },
             this.imageUrl = message.imgList[0].url;
         })
@@ -159,10 +167,8 @@ export default {
         return isLt2M;
       },
       handleRemove(file, fileList) {
-        const files=fileList.map(v=>{
-            return v.response;
-        })
-        this.form.fileList=files;
+        
+        this.form.fileList=fileLists;
       },
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;

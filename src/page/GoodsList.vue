@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row type="flex" justify="space-between">
+    <el-row type="flex" justify="space-between" class="header">
       <div>
         <el-button type="primary" @click="handelAdd">新增</el-button>
         <el-button type="danger" @click="handleDels">删除</el-button>
@@ -174,5 +174,9 @@ export default {
   }
   .input-with-select .el-input-group__prepend {
     background-color: #fff;
+  }
+
+  .header{
+    margin: 10px 0;
   }
 </style>
